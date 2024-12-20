@@ -1,19 +1,48 @@
+# Nom du workflow
 name: GitHub Actions Demo
+# ➡️ Ce nom identifie le workflow dans l'onglet Actions.
+
+# Nom personnalisé pour chaque exécution
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# ➡️ Définit un nom dynamique pour chaque exécution, incluant le nom de l'utilisateur.
+
+# Événement déclencheur
 on: [push]
+# ➡️ Le workflow est exécuté à chaque `push` sur n'importe quelle branche.
+
+# Définition des jobs
 jobs:
   Explore-GitHub-Actions:
+    if: "! contains(github.event.head_commit.message, '[skip ga]')"
     runs-on: ubuntu-latest
+    # ➡️ Spécifie que ce job doit s'exécuter sur une machine virtuelle Ubuntu.
+
+    # Étapes du job
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+        # ➡️ Exécute une commande pour afficher quel événement a déclenché le workflow.
+
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+        # ➡️ Indique sur quel système d'exploitation le job s'exécute.
+
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+        # ➡️ Affiche la branche et le dépôt actuels.
+
       - name: Check out repository code
         uses: actions/checkout@v4
+        # ➡️ Clone le dépôt dans l'environnement d'exécution.
+
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+        # ➡️ Confirme que le dépôt a été cloné.
+
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+        # ➡️ Indique que l'environnement est prêt.
+
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+        # ➡️ Liste les fichiers présents dans le dépôt cloné.
+
       - run: echo "🍏 This job's status is ${{ job.status }}."
+        # ➡️ Affiche le statut final du job (Success, Failed, etc.).
 
