@@ -1,35 +1,19 @@
-# Nom du workflow
-name: Hello World Workflow
-# ➡️ Ce nom est utilisé pour identifier le workflow dans l'onglet Actions de GitHub.
-# Il peut être modifié pour mieux décrire la tâche que le workflow accomplit.
-
-# Événements déclencheurs du workflow
-on:
-  push:
-    branches:
-      - main
-# ➡️ 'on': Spécifie l'événement qui déclenche le workflow.
-# Ici, le workflow s'exécutera lorsqu'un "push" est effectué sur la branche "main".
-# Cela garantit que les changements sur cette branche déclenchent une action automatisée.
-
-# Définition des "jobs" (unités de travail) du workflow
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
 jobs:
-  say-hello:  # Nom du job
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-    # ➡️ 'runs-on': Indique sur quel environnement s'exécute le job.
-    # Ici, le job s'exécute sur la dernière version stable d'Ubuntu dans une machine virtuelle GitHub Actions.
-
-    # Liste des étapes du job
     steps:
-    - name: Checkout repository code
-      uses: actions/checkout@v3
-      # ➡️ 'name': Nom de l'étape, affiché dans l'interface Actions.
-      # ➡️ 'uses': Indique une action réutilisable. Ici, "actions/checkout@v3" clone le dépôt dans l'environnement de travail.
-      # Cela permet aux étapes suivantes d'accéder au code source.
-
-    - name: Say Hello
-      run: echo "Hello, GitHub Actions!"
-      # ➡️ 'run': Permet d'exécuter une commande shell.
-      # Ici, on affiche un message simple dans les logs avec la commande `echo`.
-      # C'est une étape de test pour vérifier que le workflow fonctionne correctement.
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
 
