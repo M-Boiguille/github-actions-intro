@@ -58,19 +58,6 @@ main {
   font-weight:lighter;
 }
 
-
-.yt-video {
-  margin: 1em;
-  border-radius: 10px;
-}
-
-.yt-video iframe {
-  width: 90%;
-  max-width: 560px;
-  border-radius: 10px;
-  border: 2px solid rgba(250, 235, 215, 0.459);
-}
-
 #tribute-info {
   height: 100%;
   padding: 1em;
