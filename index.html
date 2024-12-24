@@ -1,148 +1,210 @@
 <!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Actions Deployment Workflow</title>
+    <style>
+        :root {
+            --primary-color: #0366d6;
+            --secondary-color: #f6f8fa;
+            --text-color: #24292e;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
 
-    <title>Kobe Bryant</title>
-  </head>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
 
-  <body>
-    <div id="main">
-      <div id="title">
-        <h1>Kobe Bryant</h1>
-        <p class="birth">23/08/1978 - 26/01/2020</p>
-      </div>
-      <div id="img-div">
-        <img
-          class="kbpic"
-          src="https://live.staticflickr.com/4707/38897524705_18c492c02b_k.jpg"
-          alt="Kobe Bryant picture"
-        />
-        <p id="img-caption">Kobe Bryant lors de sa retraite le 13 Avril 2016</p>
-      </div>
-        <div id="tribute-info">
-          <p class="my-speech">
-            Monsieur Kobe Bryant était un athlète exceptionnel, un basketteur
-            hors normes et surtout un bosseur acharné. Ce qui me reste de cet immense joueur, c'est une leçon de vie sur
-            laquelle nous pouvons tous prendre exemple : <br />
-            <span class="bold">La persévérance !</span> <br />
-            Bien-sûr, c'était un surdoué et un passionné du jeu, mais ce qui l'a
-            amené au plus haut niveau, c'est la force de travail hors du commun
-            qu'il a pu donner tout au long de sa carrière. <br />
-            C'est pour toutes ces raisons que j'ai décidé de lui dédier cette page.
-          </p>
-          <br />
-          <div id="tribute-link">
-            <a
-              target="_blank"
-              href="https://www.parlons-basket.com/2019/08/11/nba-10-anecdotes-sur-lethique-de-travail-inhumaine-de-kobe-bryant/"
-              >Les anecdotes qui en disent long sur le personnage</a
-            >
-          </div>
-        </div>
-      <div class="career">
-        <hr>
-        <br>
-        <h1>Palmarès</h1>
-        <br />
-        <br>
-        <h2>Titres en NBA</h2>
-        <br />
+        header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px var(--shadow);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        section p {
+            margin: 10px 0 15px;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: var(--secondary-color);
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 5px;
+        }
+
+        ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ol li {
+            margin: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--text-color);
+            color: var(--white);
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>GitHub Actions Deployment Workflow</h1>
+    <p>Automating CI/CD with GitHub Actions for seamless deployments</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>About the Project</h2>
+        <p>The <strong>GitHub Actions Deployment Workflow</strong> project demonstrates how to set up a CI/CD pipeline using GitHub Actions. It automates testing, building, and deploying applications, simplifying the deployment process for developers.</p>
+    </section>
+
+    <section>
+        <h2>Features</h2>
         <ul>
-          <li>- 
-            Champion NBA avec les Lakers de Los Angeles en 2000, 2001, 2002,
-            2009 et 2010
-          </li>
-          <li>- 
-            Finales NBA contre les Pistons de Détroit en 2004 et contre les
-            Celtics de Boston en 2008 avec les Lakers de Los Angeles
-          </li>
-          <li>- 
-            Champion de la Conférence Ouest en 2000, 2001, 2002, 2004, 2008,
-            2009 et 2010 avec les Lakers de Los Angeles
-          </li>
-          <li>- 
-            Champion de la Division Pacifique en 2000, 2001, 2004, 2008, 2009,
-            2010, 2011 et 2012 avec les Lakers de Los Angeles
-          </li>
+            <li>Automatic deployment to GitHub Pages on changes pushed to the <code>website</code> branch.</li>
+            <li>Optional testing and validation steps for robust CI/CD.</li>
+            <li>Dynamic branch management with optional merges to the <code>main</code> branch post-deployment.</li>
         </ul>
-        <br>
-        <hr class="mid-hr">
-        <br />
-        <h2>Titres avec la sélection américaine</h2>
-        <br />
+    </section>
+
+    <section>
+        <h2>Usage</h2>
+        <p>Follow these steps to use the workflow:</p>
+        <ol>
+            <li>Push changes to the <code>website</code> branch:
+                <pre><code>git checkout website
+git add .
+git commit -m "Update website content"
+git push origin website</code></pre>
+            </li>
+            <li>The workflow will:
+                <ul>
+                    <li>Build and deploy your changes to GitHub Pages.</li>
+                    <li>Optionally merge the branch into <code>main</code> if configured.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Accessing the Deployed Site</h2>
+        <p>Deployed sites are accessible at:</p>
+	<p><a href="https://m-boiguille.github.io/github-actions-intro">https://m-boiguille.github.io/github-actions-intro</a></p>
+    </section>
+
+    <section>
+        <h2>Development Environment</h2>
+        <p>This project uses the following tools and configurations:</p>
         <ul>
-          <li>- 
-            Médaille d'or, Amérique Médaille d'or au Championnat des Amériques
-            en 2007
-          </li>
-          <li>- 
-            Médaille d'or, Jeux olympiques Médaille d'or aux Jeux olympiques
-            d'été de 2008
-          </li>
-          <li>- 
-            Médaille d'or, Jeux olympiques Médaille d'or aux Jeux olympiques
-            d'été de 2012
-          </li>
+            <li><strong>GitHub Actions:</strong> For automation.</li>
+            <li><strong><code>actions/checkout@v3</code>:</strong> To manage repository files.</li>
+            <li><strong><code>peaceiris/actions-gh-pages@v3</code>:</strong> For GitHub Pages deployment.</li>
         </ul>
-        <br>
-        <hr class="mid-hr">
-        <br />
-        <h2>Récompenses individuelles</h2>
-        <br />
+    </section>
+
+    <section>
+        <h2>Future Improvements</h2>
         <ul>
-          <li>- NBA Most Valuable Player de la saison régulière en 2008</li>
-          <li>- NBA Finals Most Valuable Player Award en 2009 et 2010</li>
-          <li>- 
-            18 sélections au NBA All-Star Game en 1998, 2000, 2001, 2002, 2003,
-            2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
-            2015 et 2016
-          </li>
-          <li>- Participation au Rookie Game 1997</li>
-          <li>- 
-            NBA All-Star Game Most Valuable Player Award en 2002, 2007, 2009
-            avec Shaquille O'Neal et 2011
-          </li>
-          <li>- 
-            All-NBA First Team en 2002, 2003, 2004, 2006, 2007, 2008, 2009,
-            2010, 2011, 2012 et 2013
-          </li>
-          <li>- All-NBA Second Team en 2000, 2001</li>
-          <li>- All-NBA Third Team en 1999, 2005</li>
-          <li>- 
-            All-NBA Defensive First Team en 2000, 2003, 2004, 2006, 2007, 2008,
-            2009, 2010 et 2011
-          </li>
-          <li>- All-NBA Defensive Second Team en 2001, 2002 et 2012</li>
-          <li>- NBA All-Rookie Second Team en 1997</li>
-          <li>- Vainqueur du Slam Dunk Contest en 1997</li>
-          <li>- 
-            Désigné dix-sept fois « joueur du mois » dont une fois « joueur du
-            mois de la NBA » et seize fois « joueur du mois de la conférence
-            Ouest »
-          </li>
-          <li>- 
-            Désigné trente-trois fois « joueur de la semaine » dont deux fois «
-            joueur de la semaine de la NBA » et 31 fois « joueur de la semaine
-            de la conférence Ouest ».
-          </li>
+            <li>Support for more deployment targets like AWS S3 or Firebase.</li>
+            <li>Integrate testing pipelines with <code>npm test</code>.</li>
+            <li>Add notifications for workflow completion (e.g., Slack or email).</li>
+            <li>Enhance security with environment-specific secrets.</li>
         </ul>
-      </div>
-      <div class="footer">
-        <p><blockquote cite="https://www.newsweek.com/video-kobe-bryant-saying-life-too-short-resurfaces-after-nba-legends-untimely-death-smile-1484203">
-          « Prenez du bon temps, profitez de la vie. La vie est trop courte pour
-          se laisser aller, pour se décourager. <br />Il faut continuer à
-          avancer. Mettez un pied devant l’autre, souriez et continuez à aller
-          de l’avant. »</blockquote><br />
-          - Kobe Bryant
-          <a target="_blank" href="https://fr.wikipedia.org/wiki/Kobe_Bryant"
-            >(voir sa fiche wikipédia)</a
-          >
-        </p>
-      </div>
-    </div>
-  </body>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 GitHub Actions Deployment Workflow. Created by <a href="https://github.com/M-Boiguille">M-Boiguille</a>.</p>
+    <p>Project from  <a href="https://roadmap.sh">roadmap.sh</a>.</p>
+</footer>
+
+</body>
 </html>
+
