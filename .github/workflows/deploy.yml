@@ -3,7 +3,8 @@ name: CI/CD Pipeline
 on:
   push:
     paths:
-      - index.html
+      - website/index.html
+      - website/favicon.png
 
 jobs:
   deploy:
@@ -17,7 +18,7 @@ jobs:
     - name: Validate HTML
       uses: anishathalye/proof-html@v2
       with:
-        directory: ./
+        directory: ./website
         check_css: true
 
     - name: Deploy to GitHub Pages
