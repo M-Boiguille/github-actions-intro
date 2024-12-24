@@ -2,8 +2,8 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - website
+    paths:
+      - index.html
 
 jobs:
   deploy:
