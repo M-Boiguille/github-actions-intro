@@ -6,37 +6,32 @@ The **GitHub Actions Deployment Workflow** project demonstrates how to configure
 
 ## Features
 
-- Automatically deploys changes to GitHub Pages on push to the `website` branch.
+- Automatically deploys changes to GitHub Pages on push on the `index.html` file.
 - Includes optional testing and validation steps for robust CI/CD.
-- Supports dynamic branch management and merges to the `main` branch post-deployment.
 
 ## Usage
 
 ### Workflow Overview
 - **Trigger**:
-  - Executes on `push` events to the `website` branch.
+  - Executes on `push` events to the 'index.html' in the `main` branch.
 - **Jobs**:
   1. **Deploy**:
      - Deploys site files to the `gh-pages` branch.
-  2. **Merge**:
-     - Optionally merges the `website` branch into `main` post-deployment.
 
 ### Example Workflow Execution
-1. Push changes to the `website` branch:
+1. Push changes on the `index.html` file:
    ```bash
-   git checkout website
    git add .
    git commit -m "Update website content"
-   git push origin website
    ```
 2. The workflow will:
    - Build and deploy your changes to GitHub Pages.
-   - Optionally merge the branch into `main` if configured.
+   - Test the html before deploying.
 
 ### Accessing the Deployed Site
 - Deployed sites are available at:
   ```
-  https://<your-username>.github.io/<your-repo>
+    https://github.io/M-Boiguille/github-actions-intro.
   ```
 
 ## Development Environment
@@ -50,53 +45,9 @@ The **GitHub Actions Deployment Workflow** project demonstrates how to configure
   - Supports Node.js for advanced builds.
 
 ## Improvements
-- Add support for more deployment targets, such as S3 or Firebase.
 - Enable testing pipelines with `npm test` for enhanced validation.
 - Introduce notifications for workflow completion (e.g., Slack or email alerts).
 - Enhance security by using environment-specific secrets.
-
-## Example Workflow Configuration
-
-```yaml
-name: CI/CD Pipeline
-
-on:
-  push:
-    branches:
-      - website
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-
-  merge:
-    needs: deploy
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: website
-
-      - name: Merge into main
-        run: |
-          git checkout main || git checkout -b main
-          git merge website --no-ff
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
 
 ## Conclusion
 
