@@ -22,9 +22,10 @@ jobs:
         gem install proof-html
 
     - name: Validate HTML
-      uses: chrisderivativ/w3c-html-validator-action@v1
+    - uses: anishathalye/proof-html@v2
       with:
-        path: ./index.html
+        directory: ./
+        check_css: true
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
