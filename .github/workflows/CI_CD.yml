@@ -21,24 +21,10 @@ jobs:
         sudo apt-get install -y ruby
         gem install proof-html
 
-    - name: Validate HTML and CSS
-      run: |
-        mkdir -p logs
-        proof-html ./ 2> logs/proof-html.log
-
-    - name: Commit log if error
-      run: |
-        if [ -s logs/proof-html.log ]; then
-          echo "Error: HTML validation failed."
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add logs/proof-html.log
-          git commit -m "Error: HTML validation failed, check log file"
-          git push
-          exit 1
-        fi
-        echo "HTML validation tests are successful !"
-
+    - name: Validate HTML
+      uses: chrisderivativ/w3c-html-validator-action@v1
+      with:
+        path: ./index.html
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
